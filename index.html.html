@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ashokan Engineering Consultancy Ltd | AVEVA E3D | Piping Design | UK | Europe | Gulf</title>
+<meta name="description" content="Expert AVEVA E3D/PDMS administration, piping design, SP3D, Caesar II and digital engineering consultancy across UK, Europe and Gulf markets.">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#050d1a;--navy2:#091422;--navy3:#0d1e33;--navy4:#122540;
+  --gold:#c8a227;--gold2:#e8be3a;--blue:#1a5fa8;--blue2:#2176c7;
+  --text:#e2eaf5;--text2:#8fa4be;--text3:#5a7490;
+  --border:rgba(200,162,39,0.15);--border2:rgba(255,255,255,0.07);
+}
+html{scroll-behavior:smooth}
+body{background:var(--navy);color:var(--text);font-family:'Barlow',sans-serif;font-weight:400;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:70px;transition:all .4s;border-bottom:1px solid transparent}
+nav.scrolled{background:rgba(5,13,26,.96);backdrop-filter:blur(12px);border-color:var(--border)}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-mark{width:36px;height:36px;background:var(--gold);border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:18px;color:var(--navy);letter-spacing:-1px}
+.logo-text{font-family:'Rajdhani',sans-serif;font-weight:600;font-size:15px;line-height:1.2}
+.logo-text span{display:block;font-size:10px;font-weight:400;color:var(--text2);letter-spacing:2px;text-transform:uppercase}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{color:var(--text2);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.5px;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--gold);color:var(--navy);padding:8px 20px;border-radius:4px;font-size:13px;font-weight:600;text-decoration:none;letter-spacing:.5px;transition:background .2s}
+.nav-cta:hover{background:var(--gold2)}
+
+/* HERO */
+#hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+canvas#bg{position:absolute;inset:0;opacity:.4}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(5,13,26,.95) 0%,rgba(9,20,34,.85) 50%,rgba(5,13,26,.92) 100%)}
+.hero-content{position:relative;z-index:2;padding:0 5%;max-width:900px;margin-top:70px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,162,39,.12);border:1px solid var(--border);padding:6px 16px;border-radius:20px;font-size:12px;font-weight:500;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:28px}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+h1{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:clamp(48px,7vw,88px);line-height:.95;letter-spacing:-2px;margin-bottom:24px}
+h1 em{font-style:normal;color:var(--gold)}
+.hero-sub{font-size:17px;color:var(--text2);line-height:1.7;max-width:580px;margin-bottom:40px;font-weight:300}
+.hero-markets{display:flex;gap:10px;margin-bottom:40px;flex-wrap:wrap}
+.mkt-pill{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border:1px solid var(--border2);border-radius:4px;font-size:13px;color:var(--text2)}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:var(--gold);color:var(--navy);padding:14px 32px;border-radius:4px;font-weight:700;font-size:14px;text-decoration:none;letter-spacing:.5px;text-transform:uppercase;transition:all .2s;display:inline-block}
+.btn-primary:hover{background:var(--gold2);transform:translateY(-1px)}
+.btn-secondary{border:1px solid rgba(200,162,39,.4);color:var(--gold);padding:14px 32px;border-radius:4px;font-weight:600;font-size:14px;text-decoration:none;letter-spacing:.5px;text-transform:uppercase;transition:all .2s;display:inline-block}
+.btn-secondary:hover{border-color:var(--gold);background:rgba(200,162,39,.08)}
+.hero-stats{position:absolute;bottom:48px;left:5%;right:5%;display:flex;gap:0;z-index:2}
+.stat{flex:1;padding:20px 24px;border-left:1px solid var(--border2)}
+.stat:first-child{border-left:none}
+.stat-num{font-family:'Rajdhani',sans-serif;font-size:36px;font-weight:700;color:var(--gold);line-height:1}
+.stat-label{font-size:12px;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+
+/* SECTIONS */
+section{padding:100px 5%}
+.section-label{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.section-title{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:clamp(32px,4vw,52px);line-height:1.05;letter-spacing:-1px;margin-bottom:16px}
+.section-sub{font-size:16px;color:var(--text2);line-height:1.7;max-width:600px;font-weight:300}
+.section-header{margin-bottom:60px}
+
+/* DIVIDER */
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:0 5%}
+
+/* SERVICES */
+#services{background:var(--navy2)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2px;background:var(--border2)}
+.service-card{background:var(--navy2);padding:36px;transition:background .2s;cursor:default;position:relative;overflow:hidden}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transition:transform .3s;transform-origin:left}
+.service-card:hover{background:var(--navy3)}
+.service-card:hover::before{transform:scaleX(1)}
+.svc-icon{width:44px;height:44px;background:rgba(200,162,39,.1);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:20px}
+.svc-title{font-family:'Rajdhani',sans-serif;font-weight:600;font-size:20px;margin-bottom:10px}
+.svc-desc{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:20px}
+.svc-rates{display:flex;gap:8px;flex-wrap:wrap}
+.rate-tag{font-size:11px;padding:3px 8px;border-radius:3px;font-weight:600;letter-spacing:.5px}
+.rate-uk{background:rgba(29,78,216,.2);color:#60a5fa}
+.rate-eu{background:rgba(5,150,105,.2);color:#34d399}
+.rate-gulf{background:rgba(217,119,6,.2);color:#fbbf24}
+
+/* MARKETS */
+#markets{background:var(--navy)}
+.markets-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.market-card{border:1px solid var(--border2);border-radius:8px;padding:40px;position:relative;overflow:hidden;transition:border-color .3s}
+.market-card:hover{border-color:var(--gold)}
+.market-flag{font-size:40px;margin-bottom:20px;display:block}
+.market-name{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:28px;margin-bottom:8px}
+.market-countries{font-size:13px;color:var(--text3);margin-bottom:24px;letter-spacing:.5px}
+.market-feature{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text2);margin-bottom:8px}
+.market-feature::before{content:'→';color:var(--gold);font-size:12px}
+.market-rate{margin-top:24px;padding-top:24px;border-top:1px solid var(--border2)}
+.market-rate-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.market-rate-val{font-family:'Rajdhani',sans-serif;font-size:22px;font-weight:700;color:var(--gold)}
+
+/* ABOUT */
+#about{background:var(--navy2)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-img{position:relative}
+.about-card{background:var(--navy3);border:1px solid var(--border2);border-radius:8px;padding:40px}
+.about-name{font-family:'Rajdhani',sans-serif;font-size:32px;font-weight:700;margin-bottom:4px}
+.about-role{color:var(--gold);font-size:14px;font-weight:500;letter-spacing:1px;text-transform:uppercase;margin-bottom:24px}
+.about-item{display:flex;gap:12px;align-items:flex-start;margin-bottom:16px}
+.about-item-icon{width:32px;height:32px;background:rgba(200,162,39,.1);border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px}
+.about-item-text{font-size:13px;color:var(--text2);line-height:1.5}
+.about-item-text strong{color:var(--text);display:block;margin-bottom:2px}
+.cert-badge{display:inline-block;background:rgba(200,162,39,.1);border:1px solid var(--border);color:var(--gold);font-size:11px;font-weight:600;padding:4px 10px;border-radius:3px;letter-spacing:1px;margin-top:16px;margin-right:6px;text-transform:uppercase}
+.about-text p{font-size:16px;color:var(--text2);line-height:1.8;margin-bottom:20px;font-weight:300}
+.about-text strong{color:var(--text)}
+
+/* PROJECTS */
+#projects{background:var(--navy)}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.project-card{border:1px solid var(--border2);border-radius:8px;padding:32px;transition:all .3s;position:relative;overflow:hidden}
+.project-card:hover{border-color:var(--gold);transform:translateY(-4px)}
+.project-tag{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:block}
+.project-title{font-family:'Rajdhani',sans-serif;font-size:22px;font-weight:700;margin-bottom:8px}
+.project-client{font-size:13px;color:var(--text3);margin-bottom:16px}
+.project-desc{font-size:13px;color:var(--text2);line-height:1.6}
+.project-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:20px}
+.ptag{font-size:11px;padding:3px 8px;background:var(--navy3);border:1px solid var(--border2);border-radius:3px;color:var(--text2)}
+
+/* SOFTWARE */
+#software{background:var(--navy2)}
+.sw-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2px;background:var(--border2)}
+.sw-item{background:var(--navy2);padding:28px 20px;text-align:center;transition:background .2s}
+.sw-item:hover{background:var(--navy3)}
+.sw-icon{font-size:28px;margin-bottom:10px;display:block}
+.sw-name{font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:600;margin-bottom:4px}
+.sw-level{font-size:11px;color:var(--gold);text-transform:uppercase;letter-spacing:1px}
+
+/* CONTACT */
+#contact{background:var(--navy)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px}
+.contact-info-item{display:flex;align-items:flex-start;gap:16px;margin-bottom:28px}
+.contact-icon{width:40px;height:40px;background:rgba(200,162,39,.1);border:1px solid var(--border);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
+.contact-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.contact-val{font-size:15px;color:var(--text);font-weight:500}
+.contact-val a{color:var(--text);text-decoration:none}
+.contact-val a:hover{color:var(--gold)}
+.contact-markets{display:flex;gap:8px;flex-wrap:wrap;margin-top:32px;padding-top:32px;border-top:1px solid var(--border2)}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;font-size:12px;color:var(--text2);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;font-weight:500}
+.form-group input,.form-group select,.form-group textarea{width:100%;background:var(--navy2);border:1px solid var(--border2);border-radius:4px;padding:12px 16px;color:var(--text);font-family:'Barlow',sans-serif;font-size:14px;outline:none;transition:border-color .2s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--gold)}
+.form-group textarea{height:120px;resize:vertical}
+.form-group select option{background:var(--navy3)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-submit{width:100%;background:var(--gold);color:var(--navy);border:none;padding:14px;border-radius:4px;font-family:'Barlow',sans-serif;font-size:14px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;transition:background .2s;margin-top:8px}
+.form-submit:hover{background:var(--gold2)}
+
+/* FOOTER */
+footer{background:var(--navy2);border-top:1px solid var(--border2);padding:48px 5%;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
+.footer-brand{margin-bottom:16px}
+.footer-desc{font-size:13px;color:var(--text3);line-height:1.7;margin-top:12px}
+.footer-col-title{font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text);margin-bottom:16px}
+.footer-link{display:block;font-size:13px;color:var(--text3);text-decoration:none;margin-bottom:8px;transition:color .2s}
+.footer-link:hover{color:var(--gold)}
+.footer-bottom{background:var(--navy2);border-top:1px solid var(--border2);padding:20px 5%;display:flex;justify-content:space-between;align-items:center}
+.footer-bottom p{font-size:12px;color:var(--text3)}
+.footer-bottom a{color:var(--gold);text-decoration:none;font-size:12px}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(30px);transition:all .7s cubic-bezier(.4,0,.2,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .nav-links{display:none}
+  .about-grid,.contact-grid{grid-template-columns:1fr}
+  .markets-grid{grid-template-columns:1fr}
+  footer{grid-template-columns:1fr 1fr}
+  .hero-stats{flex-wrap:wrap}
+  .stat{min-width:50%}
+}
+@media(max-width:600px){
+  .form-row{grid-template-columns:1fr}
+  footer{grid-template-columns:1fr}
+  .hero-stats{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="logo">
+    <div class="logo-mark">AE</div>
+    <div class="logo-text">Ashokan Engineering<span>Consultancy Ltd</span></div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#markets">Markets</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#software">Expertise</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get Quote</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="bg"></canvas>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">UK Registered Engineering Consultancy</div>
+    <h1>Engineering<br>Excellence.<br><em>Delivered.</em></h1>
+    <p class="hero-sub">AVEVA E3D/PDMS administration, piping design, and digital engineering solutions for major EPC and energy projects across UK, Europe, and the Gulf.</p>
+    <div class="hero-markets">
+      <div class="mkt-pill">🇬🇧 United Kingdom</div>
+      <div class="mkt-pill">🇪🇺 Europe</div>
+      <div class="mkt-pill">🌍 Gulf &amp; Middle East</div>
+    </div>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Request a Quotation</a>
+      <a href="#services" class="btn-secondary">Our Services</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">12+</div><div class="stat-label">Years EPC Experience</div></div>
+    <div class="stat"><div class="stat-num">3</div><div class="stat-label">Global Markets</div></div>
+    <div class="stat"><div class="stat-num">7</div><div class="stat-label">Core Services</div></div>
+    <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Project Commitment</div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-header reveal">
+    <div class="section-label">What We Offer</div>
+    <h2 class="section-title">Specialist Engineering Services</h2>
+    <p class="section-sub">Delivering high-quality engineering solutions across plant design, 3D modelling, stress analysis, and digital engineering.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="svc-icon">⚙️</div>
+      <div class="svc-title">AVEVA E3D Administration</div>
+      <div class="svc-desc">Full E3D/PDMS system administration, PML1/PML2 macro development, CATS &amp; SPECS management, catalogue and spec build.</div>
+      <div class="svc-rates">
+        <span class="rate-tag rate-uk">🇬🇧 £65/hr</span>
+        <span class="rate-tag rate-eu">🇪🇺 €75/hr</span>
+        <span class="rate-tag rate-gulf">🌍 $90/hr</span>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <div class="svc-icon">🔩</div>
+      <div class="svc-title">Piping Design (3D Modelling)</div>
+      <div class="svc-desc">Full 3D piping modelling, isometric drawing production, MTO generation, P&amp;ID review and clash detection for offshore and onshore projects.</div>
+      <div class="svc-rates">
+        <span class="rate-tag rate-uk">🇬🇧 £60/hr</span>
+        <span class="rate-tag rate-eu">🇪🇺 €70/hr</span>
+        <span class="rate-tag rate-gulf">🌍 $85/hr</span>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <div class="svc-icon">🏗️</div>
+      <div class="svc-title">SP3D Design &amp; Support</div>
+      <div class="svc-desc">SmartPlant 3D modelling, database administration, catalogue management and multi-discipline design support for large-scale EPC projects.</div>
+      <div class="svc-rates">
+        <span class="rate-tag rate-uk">🇬🇧 £62/hr</span>
+        <span class="rate-tag rate-eu">🇪🇺 €72/hr</span>
+        <span class="rate-tag rate-gulf">🌍 $88/hr</span>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <div class="svc-icon">📐</div>
+      <div class="svc-title">AutoCAD Plant Design</div>
+      <div class="svc-desc">2D and 3D AutoCAD piping and plant layouts, general arrangement drawings, equipment layouts, and Navisworks review coordination.</div>
+      <div class="svc-rates">
+        <span class="rate-tag rate-uk">🇬🇧 £50/hr</span>
+        <span class="rate-tag rate-eu">🇪🇺 €58/hr</span>
+        <span class="rate-tag rate-gulf">🌍 $70/hr</span>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <div class="svc-icon">📊</div>
+      <div class="svc-title">Caesar II Stress Analysis</div>
+      <div class="svc-desc">Static and dynamic pipe stress analysis, offshore and onshore piping codes (ASME B31.3, B31.4, B31.8), nozzle loading assessment.</div>
+      <div class="svc-rates">
+        <span class="rate-tag rate-uk">🇬🇧 £70/hr</span>
+        <span class="rate-tag rate-eu">🇪🇺 €82/hr</span>
+        <span class="rate-tag rate-gulf">🌍 $100/hr</span>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <div class="svc-icon">🐍</div>
+      <div class="svc-title">Data Analysis (Python / Power BI)</div>
+      <div class="svc-desc">Engineering data automation with Python, PostgreSQL database management, Power BI dashboard development and reporting for EPC projects.</div>
+      <div class="svc-rates">
+        <span class="rate-tag rate-uk">🇬🇧 £80/hr</span>
+        <span class="rate-tag rate-eu">🇪🇺 €90/hr</span>
+        <span class="rate-tag rate-gulf">🌍 $105/hr</span>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <div class="svc-icon">💡</div>
+      <div class="svc-title">Digital Engineering Consultancy</div>
+      <div class="svc-desc">Digital engineering strategy, AVEVA platform administration, workflow automation, BIM integration and engineering data management.</div>
+      <div class="svc-rates">
+        <span class="rate-tag rate-uk">🇬🇧 £75/hr</span>
+        <span class="rate-tag rate-eu">🇪🇺 €88/hr</span>
+        <span class="rate-tag rate-gulf">🌍 $110/hr</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- MARKETS -->
+<section id="markets">
+  <div class="section-header reveal">
+    <div class="section-label">Where We Work</div>
+    <h2 class="section-title">Three Global Markets</h2>
+    <p class="section-sub">Delivering engineering consultancy services across the UK, European, and Gulf markets with competitive rates and local market knowledge.</p>
+  </div>
+  <div class="markets-grid">
+    <div class="market-card reveal">
+      <span class="market-flag">🇬🇧</span>
+      <div class="market-name">United Kingdom</div>
+      <div class="market-countries">England · Scotland · Wales</div>
+      <div class="market-feature">Oil &amp; gas, offshore and onshore</div>
+      <div class="market-feature">North Sea FEED &amp; detailed design</div>
+      <div class="market-feature">Infrastructure &amp; water projects</div>
+      <div class="market-feature">Inside and outside IR35</div>
+      <div class="market-rate">
+        <div class="market-rate-label">Rates from</div>
+        <div class="market-rate-val">£50 – £80 / hour</div>
+      </div>
+    </div>
+    <div class="market-card reveal">
+      <span class="market-flag">🇪🇺</span>
+      <div class="market-name">Europe</div>
+      <div class="market-countries">Netherlands · Norway · Germany · France</div>
+      <div class="market-feature">Offshore oil &amp; gas (North Sea)</div>
+      <div class="market-feature">LNG and petrochemical projects</div>
+      <div class="market-feature">Refinery and process plant design</div>
+      <div class="market-feature">Remote and hybrid engagement</div>
+      <div class="market-rate">
+        <div class="market-rate-label">Rates from</div>
+        <div class="market-rate-val">€58 – €90 / hour</div>
+      </div>
+    </div>
+    <div class="market-card reveal">
+      <span class="market-flag">🌍</span>
+      <div class="market-name">Gulf &amp; Middle East</div>
+      <div class="market-countries">UAE · Saudi Arabia · Qatar · Kuwait</div>
+      <div class="market-feature">ADNOC, Saudi Aramco projects</div>
+      <div class="market-feature">LNG, petrochemical, upstream</div>
+      <div class="market-feature">Tax-free package engagements</div>
+      <div class="market-feature">On-site and remote options</div>
+      <div class="market-rate">
+        <div class="market-rate-label">Rates from</div>
+        <div class="market-rate-val">$70 – $110 / hour</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-img reveal">
+      <div class="about-card">
+        <div class="about-name">Vishal Ashokan</div>
+        <div class="about-role">Founder &amp; Director</div>
+        <div class="about-item">
+          <div class="about-item-icon">🏢</div>
+          <div class="about-item-text"><strong>12+ Years EPC Experience</strong>FEED, detailed design, and commissioning support for offshore and onshore projects.</div>
+        </div>
+        <div class="about-item">
+          <div class="about-item-icon">⚓</div>
+          <div class="about-item-text"><strong>Ex-Aker Solutions</strong>Senior AVEVA E3D/PDMS Administrator and Piping Designer across multiple major projects.</div>
+        </div>
+        <div class="about-item">
+          <div class="about-item-icon">📍</div>
+          <div class="about-item-text"><strong>Based in UK</strong>Hatfield, Hertfordshire — available for UK, European and Gulf projects.</div>
+        </div>
+        <div class="about-item">
+          <div class="about-item-icon">📞</div>
+          <div class="about-item-text"><strong>Contact</strong>+44-7423470093<br>vishal@ashokanengineering.co.uk</div>
+        </div>
+        <div>
+          <span class="cert-badge">CSPO Certified</span>
+          <span class="cert-badge">AVEVA Specialist</span>
+          <span class="cert-badge">EPC Expert</span>
+        </div>
+      </div>
+    </div>
+    <div class="about-text reveal">
+      <div class="section-label">About Us</div>
+      <h2 class="section-title">Built on Real Project Experience</h2>
+      <p>Ashokan Engineering Consultancy Ltd is a UK-registered engineering consultancy founded by Vishal Ashokan, a <strong>Senior AVEVA E3D/PDMS Administrator and Piping Designer</strong> with over 12 years of hands-on EPC project experience.</p>
+      <p>Having delivered complex engineering solutions on <strong>major offshore and onshore projects</strong> including Valhall PWP, Hugin B, and Norfolk Vanguard at Aker Solutions, we bring the technical depth and project discipline of a major EPC house — at the agility and value of an independent consultancy.</p>
+      <p>We combine deep AVEVA platform expertise with modern data engineering skills — Python, PostgreSQL, Power BI — enabling us to bridge the gap between <strong>traditional plant design and digital engineering</strong>, offering clients a genuinely comprehensive service package.</p>
+      <a href="#contact" class="btn-primary" style="margin-top:8px">Work With Us</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header reveal">
+    <div class="section-label">Track Record</div>
+    <h2 class="section-title">Key Project Experience</h2>
+    <p class="section-sub">Delivered across some of the most demanding offshore and onshore EPC projects in the UK and international energy sector.</p>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card reveal">
+      <span class="project-tag">Offshore · Norway</span>
+      <div class="project-title">Valhall PWP</div>
+      <div class="project-client">Aker Solutions / BP</div>
+      <div class="project-desc">AVEVA E3D/PDMS administration and piping design for the Valhall Wellhead Platform Project in the Norwegian North Sea. Multi-discipline 3D modelling and MTO production.</div>
+      <div class="project-tags"><span class="ptag">AVEVA E3D</span><span class="ptag">Piping Design</span><span class="ptag">Offshore</span><span class="ptag">FEED</span></div>
+    </div>
+    <div class="project-card reveal">
+      <span class="project-tag">Offshore · North Sea</span>
+      <div class="project-title">Hugin B</div>
+      <div class="project-client">Aker Solutions</div>
+      <div class="project-desc">Senior piping designer and E3D administrator on the Hugin B offshore platform project. Detailed design phase including isometrics, MTOs, and clash resolution across 1,500+ branches.</div>
+      <div class="project-tags"><span class="ptag">PDMS</span><span class="ptag">Isometrics</span><span class="ptag">MTO</span><span class="ptag">Detailed Design</span></div>
+    </div>
+    <div class="project-card reveal">
+      <span class="project-tag">Offshore Wind · UK</span>
+      <div class="project-title">Norfolk Vanguard</div>
+      <div class="project-client">Aker Solutions / Vattenfall</div>
+      <div class="project-desc">AVEVA E3D administration and piping design support for the Norfolk Vanguard offshore wind project, including offshore substation platform design and cable array support structures.</div>
+      <div class="project-tags"><span class="ptag">AVEVA E3D</span><span class="ptag">Offshore Wind</span><span class="ptag">UK</span><span class="ptag">PML</span></div>
+    </div>
+    <div class="project-card reveal">
+      <span class="project-tag">Digital Engineering · UK</span>
+      <div class="project-title">IntelliPlant Suite</div>
+      <div class="project-client">Ashokan Engineering Consultancy</div>
+      <div class="project-desc">Proprietary digital engineering tools including E3D ErrorFix Hub, LineCheck AI validation layer, and data validation dashboard — demonstrating capability in engineering data automation and AI integration.</div>
+      <div class="project-tags"><span class="ptag">Python</span><span class="ptag">React</span><span class="ptag">PostgreSQL</span><span class="ptag">AI</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SOFTWARE -->
+<section id="software">
+  <div class="section-header reveal">
+    <div class="section-label">Technology Stack</div>
+    <h2 class="section-title">Software Expertise</h2>
+    <p class="section-sub">Proficient across industry-leading engineering and data platforms, covering plant design, stress analysis, and digital engineering tools.</p>
+  </div>
+  <div class="sw-grid reveal">
+    <div class="sw-item"><span class="sw-icon">⚙️</span><div class="sw-name">AVEVA E3D</div><div class="sw-level">Expert</div></div>
+    <div class="sw-item"><span class="sw-icon">🔧</span><div class="sw-name">AVEVA PDMS</div><div class="sw-level">Expert</div></div>
+    <div class="sw-item"><span class="sw-icon">🏗️</span><div class="sw-name">SP3D</div><div class="sw-level">Advanced</div></div>
+    <div class="sw-item"><span class="sw-icon">📐</span><div class="sw-name">AutoCAD</div><div class="sw-level">Expert</div></div>
+    <div class="sw-item"><span class="sw-icon">🔍</span><div class="sw-name">Navisworks</div><div class="sw-level">Advanced</div></div>
+    <div class="sw-item"><span class="sw-icon">📊</span><div class="sw-name">Caesar II</div><div class="sw-level">Advanced</div></div>
+    <div class="sw-item"><span class="sw-icon">🐍</span><div class="sw-name">Python</div><div class="sw-level">Advanced</div></div>
+    <div class="sw-item"><span class="sw-icon">📈</span><div class="sw-name">Power BI</div><div class="sw-level">Advanced</div></div>
+    <div class="sw-item"><span class="sw-icon">🗄️</span><div class="sw-name">PostgreSQL</div><div class="sw-level">Advanced</div></div>
+    <div class="sw-item"><span class="sw-icon">⚛️</span><div class="sw-name">React</div><div class="sw-level">Intermediate</div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-grid">
+    <div class="reveal">
+      <div class="section-label">Get In Touch</div>
+      <h2 class="section-title">Request a Quotation</h2>
+      <p class="section-sub" style="margin-bottom:40px">Tell us about your project requirements and we'll respond with a tailored quotation within 24 hours.</p>
+      <div class="contact-info-item">
+        <div class="contact-icon">📞</div>
+        <div><div class="contact-label">Phone</div><div class="contact-val">+44-7423470093</div></div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-icon">✉️</div>
+        <div><div class="contact-label">Email</div><div class="contact-val"><a href="mailto:vishal@ashokanengineering.co.uk">vishal@ashokanengineering.co.uk</a></div></div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-icon">🌐</div>
+        <div><div class="contact-label">Website</div><div class="contact-val"><a href="https://www.ashokanengineering.com">www.ashokanengineering.com</a></div></div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-icon">📍</div>
+        <div><div class="contact-label">Location</div><div class="contact-val">Hatfield, Hertfordshire, UK<br><span style="font-size:13px;color:var(--text2)">Company Reg: England &amp; Wales</span></div></div>
+      </div>
+      <div class="contact-markets">
+        <div class="mkt-pill">🇬🇧 UK Projects</div>
+        <div class="mkt-pill">🇪🇺 European Projects</div>
+        <div class="mkt-pill">🌍 Gulf Projects</div>
+      </div>
+    </div>
+    <div class="reveal">
+      <form id="contactForm" onsubmit="submitForm(event)">
+        <div class="form-row">
+          <div class="form-group"><label>First Name</label><input type="text" placeholder="John" required></div>
+          <div class="form-group"><label>Last Name</label><input type="text" placeholder="Smith" required></div>
+        </div>
+        <div class="form-group"><label>Company</label><input type="text" placeholder="Your Company Name" required></div>
+        <div class="form-group"><label>Email Address</label><input type="email" placeholder="john@company.com" required></div>
+        <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+44 ..."></div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Service Required</label>
+            <select required>
+              <option value="">Select Service</option>
+              <option>AVEVA E3D Administration</option>
+              <option>Piping Design (3D Modelling)</option>
+              <option>SP3D Design &amp; Support</option>
+              <option>AutoCAD Plant Design</option>
+              <option>Caesar II Stress Analysis</option>
+              <option>Data Analysis (Python/Power BI)</option>
+              <option>Digital Engineering Consultancy</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Target Market</label>
+            <select>
+              <option>United Kingdom</option>
+              <option>Europe</option>
+              <option>Gulf / Middle East</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group"><label>Project Details</label><textarea placeholder="Briefly describe your project requirements, duration, and any specific skills needed..."></textarea></div>
+        <button type="submit" class="form-submit" id="submitBtn">Send Enquiry →</button>
+        <p id="formMsg" style="margin-top:12px;font-size:13px;color:var(--gold);display:none">✓ Thank you! We'll respond within 24 hours.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">
+      <div class="logo">
+        <div class="logo-mark">AE</div>
+        <div class="logo-text">Ashokan Engineering<span>Consultancy Ltd</span></div>
+      </div>
+    </div>
+    <p class="footer-desc">UK-registered engineering consultancy specialising in AVEVA E3D/PDMS, piping design, and digital engineering across UK, European, and Gulf markets.</p>
+  </div>
+  <div>
+    <div class="footer-col-title">Services</div>
+    <a href="#services" class="footer-link">AVEVA E3D Admin</a>
+    <a href="#services" class="footer-link">Piping Design</a>
+    <a href="#services" class="footer-link">SP3D Support</a>
+    <a href="#services" class="footer-link">Caesar II Analysis</a>
+    <a href="#services" class="footer-link">Data Analytics</a>
+    <a href="#services" class="footer-link">Digital Engineering</a>
+  </div>
+  <div>
+    <div class="footer-col-title">Markets</div>
+    <a href="#markets" class="footer-link">🇬🇧 United Kingdom</a>
+    <a href="#markets" class="footer-link">🇪🇺 Europe</a>
+    <a href="#markets" class="footer-link">🌍 Gulf &amp; Middle East</a>
+    <a href="#about" class="footer-link">About Us</a>
+    <a href="#projects" class="footer-link">Projects</a>
+  </div>
+  <div>
+    <div class="footer-col-title">Contact</div>
+    <a href="tel:+447423470093" class="footer-link">+44-7423470093</a>
+    <a href="mailto:vishal@ashokanengineering.co.uk" class="footer-link">vishal@ashokanengineering.co.uk</a>
+    <a href="https://www.ashokanengineering.com" class="footer-link">ashokanengineering.com</a>
+    <p class="footer-link" style="cursor:default">Hatfield, Hertfordshire, UK</p>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <p>© 2026 Ashokan Engineering Consultancy Ltd. Registered in England &amp; Wales.</p>
+  <a href="#hero">Back to Top ↑</a>
+</div>
+
+<script>
+// NAV scroll effect
+window.addEventListener('scroll',()=>{
+  document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50);
+});
+
+// Canvas animation
+const canvas=document.getElementById('bg');
+const ctx=canvas.getContext('2d');
+let W,H,nodes=[];
+function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;initNodes();}
+function initNodes(){
+  nodes=[];
+  for(let i=0;i<25;i++){
+    nodes.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,r:Math.random()*2+1});
+  }
+}
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  // Draw grid lines
+  ctx.strokeStyle='rgba(200,162,39,0.06)';
+  ctx.lineWidth=1;
+  for(let x=0;x<W;x+=80){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
+  for(let y=0;y<H;y+=80){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
+  // Draw connections
+  nodes.forEach((n,i)=>{
+    nodes.slice(i+1).forEach(m=>{
+      const d=Math.hypot(n.x-m.x,n.y-m.y);
+      if(d<200){
+        ctx.strokeStyle=`rgba(200,162,39,${.08*(1-d/200)})`;
+        ctx.lineWidth=1;
+        ctx.beginPath();ctx.moveTo(n.x,n.y);ctx.lineTo(m.x,m.y);ctx.stroke();
+      }
+    });
+    // Move
+    n.x+=n.vx;n.y+=n.vy;
+    if(n.x<0||n.x>W)n.vx*=-1;
+    if(n.y<0||n.y>H)n.vy*=-1;
+    // Draw node
+    ctx.fillStyle='rgba(200,162,39,0.3)';
+    ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,Math.PI*2);ctx.fill();
+  });
+  requestAnimationFrame(draw);
+}
+window.addEventListener('resize',resize);
+resize();draw();
+
+// Scroll reveal
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');}});
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// Form submit
+function submitForm(e){
+  e.preventDefault();
+  const btn=document.getElementById('submitBtn');
+  btn.textContent='Sending...';btn.disabled=true;
+  setTimeout(()=>{
+    document.getElementById('formMsg').style.display='block';
+    btn.textContent='Sent ✓';
+  },1200);
+}
+</script>
+</body>
+</html>
