@@ -39,7 +39,7 @@ nav.scrolled{background:rgba(5,13,26,.96);backdrop-filter:blur(12px);border-colo
 #hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
 canvas#bg{position:absolute;inset:0;opacity:.4}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(5,13,26,.97) 0%,rgba(9,20,34,.88) 50%,rgba(5,13,26,.94) 100%)}
-.hero-content{position:relative;z-index:2;padding:0 5%;max-width:920px;margin-top:70px}
+.hero-content{position:relative;z-index:2;padding:0 5% 140px;max-width:920px;margin-top:70px}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(13,148,136,.12);border:1px solid var(--border-teal);padding:6px 16px;border-radius:20px;font-size:11px;font-weight:600;color:var(--teal2);letter-spacing:2px;text-transform:uppercase;margin-bottom:28px}
 .hero-badge::before{content:'';width:6px;height:6px;background:var(--teal2);border-radius:50%;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
@@ -89,7 +89,9 @@ section{padding:100px 5%}
 .svc-bullets li::before{content:'—';position:absolute;left:0;color:var(--teal);font-size:11px}
 .svc-tools{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:20px}
 .svc-tool{font-size:10px;padding:2px 8px;border-radius:3px;font-weight:600;letter-spacing:.5px;background:rgba(13,148,136,.1);border:1px solid var(--border-teal);color:var(--teal2)}
-.svc-rates{display:flex;gap:6px;flex-wrap:wrap}
+.svc-rates{display:none;gap:6px;flex-wrap:wrap;margin-top:8px}
+.rate-toggle{background:transparent;border:1px solid var(--teal);color:var(--teal2);font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;cursor:pointer;letter-spacing:.5px;transition:all .2s;margin-top:12px;display:inline-flex;align-items:center;gap:5px}
+.rate-toggle:hover{background:rgba(13,148,136,.15)}
 .rate-tag{font-size:11px;padding:3px 8px;border-radius:3px;font-weight:600;letter-spacing:.5px}
 .rate-uk{background:rgba(29,78,216,.2);color:#60a5fa}
 .rate-eu{background:rgba(5,150,105,.2);color:#34d399}
@@ -325,6 +327,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border2);padding:48px 
         <span class="svc-tool">Global Workshare</span>
         <span class="svc-tool">AIZE</span>
       </div>
+      <button class="rate-toggle" onclick="toggleRates(this)">💰 View Rates ▾</button>
       <div class="svc-rates">
         <span class="rate-tag rate-uk">🇬🇧 £65/hr</span>
         <span class="rate-tag rate-eu">🇪🇺 €75/hr</span>
@@ -357,6 +360,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border2);padding:48px 
         <span class="svc-tool">PDMS</span>
         <span class="svc-tool">SmartMaterial</span>
       </div>
+      <button class="rate-toggle" onclick="toggleRates(this)">💰 View Rates ▾</button>
       <div class="svc-rates">
         <span class="rate-tag rate-uk">🇬🇧 £65/hr</span>
         <span class="rate-tag rate-eu">🇪🇺 €75/hr</span>
@@ -388,6 +392,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border2);padding:48px 
         <span class="svc-tool">PDMS</span>
         <span class="svc-tool">Spool Drawing</span>
       </div>
+      <button class="rate-toggle" onclick="toggleRates(this)">💰 View Rates ▾</button>
       <div class="svc-rates">
         <span class="rate-tag rate-uk">🇬🇧 £62/hr</span>
         <span class="rate-tag rate-eu">🇪🇺 €72/hr</span>
@@ -420,6 +425,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border2);padding:48px 
         <span class="svc-tool">MDS</span>
         <span class="svc-tool">MTO</span>
       </div>
+      <button class="rate-toggle" onclick="toggleRates(this)">💰 View Rates ▾</button>
       <div class="svc-rates">
         <span class="rate-tag rate-uk">🇬🇧 £62/hr</span>
         <span class="rate-tag rate-eu">🇪🇺 €72/hr</span>
@@ -452,6 +458,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border2);padding:48px 
         <span class="svc-tool">C#</span>
         <span class="svc-tool">E3D Scripting</span>
       </div>
+      <button class="rate-toggle" onclick="toggleRates(this)">💰 View Rates ▾</button>
       <div class="svc-rates">
         <span class="rate-tag rate-uk">🇬🇧 £70/hr</span>
         <span class="rate-tag rate-eu">🇪🇺 €80/hr</span>
@@ -478,6 +485,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border2);padding:48px 
         <span class="svc-tool">SmartPlant 3D</span>
         <span class="svc-tool">Piping Design</span>
       </div>
+      <button class="rate-toggle" onclick="toggleRates(this)">💰 View Rates ▾</button>
       <div class="svc-rates">
         <span class="rate-tag rate-uk">🇬🇧 £60/hr</span>
         <span class="rate-tag rate-eu">🇪🇺 €70/hr</span>
@@ -505,6 +513,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border2);padding:48px 
         <span class="svc-tool">AutoCAD Plant 3D</span>
         <span class="svc-tool">2D Layout</span>
       </div>
+      <button class="rate-toggle" onclick="toggleRates(this)">💰 View Rates ▾</button>
       <div class="svc-rates">
         <span class="rate-tag rate-uk">🇬🇧 £48/hr</span>
         <span class="rate-tag rate-eu">🇪🇺 €56/hr</span>
@@ -534,6 +543,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border2);padding:48px 
         <span class="svc-tool">Clash Detection</span>
         <span class="svc-tool">Model Review</span>
       </div>
+      <button class="rate-toggle" onclick="toggleRates(this)">💰 View Rates ▾</button>
       <div class="svc-rates">
         <span class="rate-tag rate-uk">🇬🇧 £50/hr</span>
         <span class="rate-tag rate-eu">🇪🇺 €58/hr</span>
@@ -563,6 +573,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border2);padding:48px 
         <span class="svc-tool">Pipe Stress</span>
         <span class="svc-tool">Offshore Codes</span>
       </div>
+      <button class="rate-toggle" onclick="toggleRates(this)">💰 View Rates ▾</button>
       <div class="svc-rates">
         <span class="rate-tag rate-uk">🇬🇧 £70/hr</span>
         <span class="rate-tag rate-eu">🇪🇺 €82/hr</span>
@@ -591,6 +602,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border2);padding:48px 
         <span class="svc-tool">AI</span>
         <span class="svc-tool">Data Analysis</span>
       </div>
+      <button class="rate-toggle" onclick="toggleRates(this)">💰 View Rates ▾</button>
       <div class="svc-rates">
         <span class="rate-tag rate-uk">🇬🇧 £80/hr</span>
         <span class="rate-tag rate-eu">🇪🇺 €90/hr</span>
@@ -1151,6 +1163,16 @@ function submitForm(e){
     document.getElementById('formMsg').style.display='block';
     btn.textContent='Sent ✓';
   },1200);
+}
+</script>
+
+<script>
+function toggleRates(btn) {
+  var ratesDiv = btn.nextElementSibling;
+  var isVisible = ratesDiv.style.display === 'flex';
+  ratesDiv.style.display = isVisible ? 'none' : 'flex';
+  btn.innerHTML = isVisible ? '💰 View Rates ▾' : '💰 Hide Rates ▴';
+  btn.style.background = isVisible ? 'transparent' : 'rgba(13,148,136,.15)';
 }
 </script>
 </body>
