@@ -36,10 +36,28 @@ nav.scrolled{background:rgba(5,13,26,.96);backdrop-filter:blur(12px);border-colo
 .logo-sub{font-size:9px;font-weight:500;color:var(--teal2);letter-spacing:3px;text-transform:uppercase;margin-top:2px}
 
 /* HERO */
-#hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+#hero{position:relative;min-height:100vh;display:flex;flex-direction:column;overflow:hidden}
 canvas#bg{position:absolute;inset:0;opacity:.4}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(5,13,26,.97) 0%,rgba(9,20,34,.88) 50%,rgba(5,13,26,.94) 100%)}
-.hero-content{position:relative;z-index:2;padding:0 5% 140px;max-width:920px;margin-top:70px}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(5,13,26,.98) 0%,rgba(5,13,26,.85) 55%,rgba(5,13,26,0) 100%);z-index:1}
+.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:55% 45%;min-height:100vh;width:100%;align-items:center}
+.hero-content{padding:100px 4% 160px 5%}
+/* SLIDESHOW */
+.hero-slideshow{position:relative;height:100vh;overflow:hidden}
+.slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.2s ease;background-color:#091422}
+.slide.active{opacity:1}
+.slide-left-fade{position:absolute;inset:0;background:linear-gradient(to right,rgba(5,13,26,1) 0%,rgba(5,13,26,.7) 30%,transparent 70%)}
+.slide-bottom-fade{position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(to top,rgba(5,13,26,.9),transparent)}
+.slide-caption{position:absolute;bottom:110px;right:28px;text-align:right;z-index:10;opacity:0;transform:translateY(10px);transition:all .6s ease .3s}
+.slide.active .slide-caption{opacity:1;transform:translateY(0)}
+.slide-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal2);margin-bottom:5px;padding:2px 8px;background:rgba(13,148,136,.2);border-radius:10px;display:inline-block}
+.slide-title{font-family:"Rajdhani",sans-serif;font-size:20px;font-weight:700;color:var(--text);margin:4px 0 3px}
+.slide-desc{font-size:12px;color:var(--text2)}
+.slide-dots{position:absolute;bottom:70px;right:28px;display:flex;gap:7px;z-index:10}
+.slide-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.25);cursor:pointer;transition:all .35s;border:none}
+.slide-dot.active{background:var(--teal2);width:22px;border-radius:4px}
+.slide-counter{position:absolute;top:90px;right:28px;font-family:"Rajdhani",sans-serif;font-size:13px;color:rgba(255,255,255,.4);z-index:10;letter-spacing:1px}
+.slide-progress{position:absolute;bottom:0;left:0;height:3px;background:var(--teal);z-index:10;animation:progress 4s linear infinite}
+@keyframes progress{0%{width:0}100%{width:100%}}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(13,148,136,.12);border:1px solid var(--border-teal);padding:6px 16px;border-radius:20px;font-size:11px;font-weight:600;color:var(--teal2);letter-spacing:2px;text-transform:uppercase;margin-bottom:28px}
 .hero-badge::before{content:'';width:6px;height:6px;background:var(--teal2);border-radius:50%;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
@@ -188,6 +206,9 @@ footer{background:var(--navy2);border-top:1px solid var(--border2);padding:48px 
   footer{grid-template-columns:1fr 1fr}
   .hero-stats{flex-wrap:wrap}
   .stat{min-width:50%}
+  .hero-inner{grid-template-columns:1fr}
+  .hero-slideshow{display:none}
+  .hero-content{padding:100px 5% 160px}
 }
 @media(max-width:600px){
   .form-row{grid-template-columns:1fr}
@@ -242,6 +263,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border2);padding:48px 
 <section id="hero">
   <canvas id="bg"></canvas>
   <div class="hero-overlay"></div>
+  <div class="hero-inner">
   <div class="hero-content">
     <div class="hero-badge">Global Oil &amp; Gas · EPC · Digital Engineering Consultancy</div>
     <h1>Global Oil &amp; Gas,<br>Piping &amp; <em>Digital</em><br>Engineering.</h1>
@@ -283,6 +305,64 @@ footer{background:var(--navy2);border-top:1px solid var(--border2);padding:48px 
       <span class="tech-badge">Engineering Consultation</span>
     </div>
   </div>
+
+  <div class="hero-slideshow">
+    <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1566438480900-0609be27a4be?w=900&h=900&fit=crop&auto=format&q=80')" onerror="this.style.backgroundImage='none'">
+      <div class="slide-left-fade"></div>
+      <div class="slide-bottom-fade"></div>
+      <div class="slide-caption">
+        <div class="slide-tag">Oil &amp; Gas</div>
+        <div class="slide-title">Upstream &amp; Downstream EPC</div>
+        <div class="slide-desc">Refinery, Gas Plant &amp; Pipeline Projects</div>
+      </div>
+    </div>
+    <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1581093588401-fbb62a02f120?w=900&h=900&fit=crop&auto=format&q=80')" onerror="this.style.backgroundImage='none'">
+      <div class="slide-left-fade"></div>
+      <div class="slide-bottom-fade"></div>
+      <div class="slide-caption">
+        <div class="slide-tag">Chemical Plants</div>
+        <div class="slide-title">Process &amp; Petrochemical</div>
+        <div class="slide-desc">Chemical Facilities &amp; Process Plants</div>
+      </div>
+    </div>
+    <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1531390658740-a9c2e07fb99a?w=900&h=900&fit=crop&auto=format&q=80')" onerror="this.style.backgroundImage='none'">
+      <div class="slide-left-fade"></div>
+      <div class="slide-bottom-fade"></div>
+      <div class="slide-caption">
+        <div class="slide-tag">FPSO &amp; Offshore</div>
+        <div class="slide-title">Floating Production Units</div>
+        <div class="slide-desc">Offshore Platforms &amp; FPSO Projects</div>
+      </div>
+    </div>
+    <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=900&h=900&fit=crop&auto=format&q=80')" onerror="this.style.backgroundImage='none'">
+      <div class="slide-left-fade"></div>
+      <div class="slide-bottom-fade"></div>
+      <div class="slide-caption">
+        <div class="slide-tag">Renewable Energy</div>
+        <div class="slide-title">Wind &amp; Solar Projects</div>
+        <div class="slide-desc">Green Energy &amp; Sustainable Infrastructure</div>
+      </div>
+    </div>
+    <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1548940740-204726a19be3?w=900&h=900&fit=crop&auto=format&q=80')" onerror="this.style.backgroundImage='none'">
+      <div class="slide-left-fade"></div>
+      <div class="slide-bottom-fade"></div>
+      <div class="slide-caption">
+        <div class="slide-tag">Nuclear &amp; Power</div>
+        <div class="slide-title">Power Generation</div>
+        <div class="slide-desc">Nuclear Plants &amp; Energy Facilities</div>
+      </div>
+    </div>
+    <div class="slide-counter"><span id="snum">1</span> / 5</div>
+    <div class="slide-dots">
+      <button class="slide-dot active" onclick="gSlide(0)"></button>
+      <button class="slide-dot" onclick="gSlide(1)"></button>
+      <button class="slide-dot" onclick="gSlide(2)"></button>
+      <button class="slide-dot" onclick="gSlide(3)"></button>
+      <button class="slide-dot" onclick="gSlide(4)"></button>
+    </div>
+    <div class="slide-progress" id="sprogress"></div>
+  </div>
+  </div><!-- /hero-inner -->
   <div class="hero-stats">
     <div class="stat"><div class="stat-num">12+</div><div class="stat-label">Years EPC Experience</div></div>
     <div class="stat"><div class="stat-num">8</div><div class="stat-label">Global Markets</div></div>
@@ -1174,6 +1254,35 @@ function toggleRates(btn) {
   btn.innerHTML = isVisible ? '💰 View Rates ▾' : '💰 Hide Rates ▴';
   btn.style.background = isVisible ? 'transparent' : 'rgba(13,148,136,.15)';
 }
+</script>
+
+<script>
+(function(){
+  var cur=0, total=5, timer;
+  function gSlide(n){
+    var slides=document.querySelectorAll('.slide');
+    var dots=document.querySelectorAll('.slide-dot');
+    slides[cur].classList.remove('active');
+    dots[cur].classList.remove('active');
+    cur=n;
+    slides[cur].classList.add('active');
+    dots[cur].classList.add('active');
+    document.getElementById('snum').textContent=cur+1;
+    // reset progress bar
+    var p=document.getElementById('sprogress');
+    p.style.animation='none';
+    p.offsetHeight;
+    p.style.animation='progress 4s linear infinite';
+  }
+  window.gSlide=gSlide;
+  timer=setInterval(function(){ gSlide((cur+1)%total); },4000);
+  // pause on hover
+  var ss=document.querySelector('.hero-slideshow');
+  if(ss){
+    ss.addEventListener('mouseenter',function(){clearInterval(timer);});
+    ss.addEventListener('mouseleave',function(){timer=setInterval(function(){gSlide((cur+1)%total);},4000);});
+  }
+})();
 </script>
 </body>
 </html>
